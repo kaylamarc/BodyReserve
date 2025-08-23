@@ -1,6 +1,18 @@
 <layout id="MainLayout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
-    <!-- Title label, centered near the top -->
-    <label x="center" y="top" text="@Strings.prompt" color="Graphics.COLOR_WHITE" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_LARGE"/>
-    <!-- Body Battery value label, centered vertically -->
-    <label x="center" y="center" text="@Strings.body_battery" color="Graphics.COLOR_WHITE" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_LARGE"/>
+
+    <!-- Prompt text scaled to the top portion of the screen -->
+    <text-area id="promptText" 
+               x="center" y="top" width="100%" height="30" 
+               text="@Strings.prompt" 
+               color="Graphics.COLOR_WHITE" 
+               justification="Graphics.TEXT_JUSTIFY_CENTER" 
+               font="Graphics.FONT_LARGE"/>
+
+    <!-- Body Battery value scaled and centered vertically -->
+    <text-area id="batteryValue" 
+               x="0" y="40" width="100%" height="30" 
+               text="@Strings.body_battery" 
+               color="Graphics.COLOR_WHITE" 
+               justification="Graphics.TEXT_JUSTIFY_CENTER" 
+               font="Graphics.FONT_LARGE"/>
 </layout>
