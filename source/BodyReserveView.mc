@@ -39,49 +39,53 @@ class BodyReserveView extends WatchUi.View {
 
         // Draw Body Battery value on screen
         if (bodyBattery != null) {
-            var bbInt = bodyBattery.toNumber();
+            // var bbInt = bodyBattery.toNumber();
+            var bbInt = 100;
             var battHeight = 0;
             var battWidth = 0;
+
+            var battBitMapRes;
 
             // Set color based on value
             var fillColor;
             if (bbInt >= 80) {
                 fillColor = Graphics.COLOR_GREEN;
+                battBitMapRes = WatchUi.loadResource(Rez.Drawables.happy);
             } else if (bbInt < 80 && bbInt >= 60) {
                 fillColor = Graphics.createColor(0, 255, 255, 0);
+                battBitMapRes = WatchUi.loadResource(Rez.Drawables.okay);
             } else if (bbInt < 60 && bbInt >= 30) {
                 fillColor = Graphics.COLOR_ORANGE;
+                battBitMapRes = WatchUi.loadResource(Rez.Drawables.tired);
             } else {
                 fillColor = Graphics.COLOR_RED;
+                battBitMapRes = WatchUi.loadResource(Rez.Drawables.sleep);
             }
 
             // Center positions
-            var posX = dc.getWidth() / 2;
+            var posX = dc.getWidth() / 2 - (battBitMapRes.getWidth() / 2);
             var posY = dc.getHeight() / 2;
-
-            // Load battery outline bitmap
-            var battBitMapRes = WatchUi.loadResource(Rez.Drawables.battery_outline);
 
             // full height of the battery bitmap
             var battMaxHeight = battBitMapRes.getHeight();
-            battWidth = battBitMapRes.getWidth();
+            battWidth = battBitMapRes.getWidth() - 2;
 
             // 7px for the top of the battery outline
-            battHeight = (((battMaxHeight * bbInt) - 7)/ 100);
+            battHeight = (((battMaxHeight - 4) * bbInt)/ 100);
 
             // Adjust posX to the top left edge of the battery outline
             var rectY = posY + (battMaxHeight - battHeight);
             
             // Draw battery fill rectangle
             dc.setColor(fillColor, Graphics.COLOR_TRANSPARENT);
-            dc.fillRectangle(posX, rectY, battWidth, battHeight);
+            dc.fillRectangle(posX+1, rectY, battWidth, battHeight);
 
             // Draw battery outline bitmap on top of the fill rectangle
             dc.drawBitmap(posX, posY, battBitMapRes);
 
             // Draw Body Battery value as text
             dc.setColor(fillColor, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(posX, posY - 70, Graphics.FONT_LARGE, bbInt.toString() + "%", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(dc.getWidth() / 2, posY - 70, Graphics.FONT_LARGE, bbInt.toString() + "%", Graphics.TEXT_JUSTIFY_CENTER);
         }
     }
 
