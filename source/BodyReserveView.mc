@@ -39,8 +39,7 @@ class BodyReserveView extends WatchUi.View {
 
         // Draw Body Battery value on screen
         if (bodyBattery != null) {
-            // var bbInt = bodyBattery.toNumber();
-            var bbInt = 100;
+            var bbInt = bodyBattery.toNumber();
             var battHeight = 0;
             var battWidth = 0;
 
