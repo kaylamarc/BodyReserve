@@ -1,6 +1,5 @@
 <drawables xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
     <bitmap id="LauncherIcon" filename="launcher_icon.svg" dithering="none" />
-    <bitmap id="battery_outline" filename="battery_outline.png" dithering="none" />
     <bitmap id="happy" filename="happy.png" packingFormat="png" />
     <bitmap id="okay" filename="okay.png" packingFormat="png" />
     <bitmap id="tired" filename="tired.png" packingFormat="png" />
